@@ -1,0 +1,39 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "shreekan/fibo-complex-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+          "name": "api-server",
+          "image": "shreekan/fibo-complex-api-server",
+          "hostname": "api-server",
+          "essential": false
+        },
+        {
+          "name": "worker",
+          "image": "shreekan/fibo-complex-worker",
+          "hostname": "worker",
+          "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "shreekan/fibo-complex-nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": [
+                "client",
+                "api-server"
+            ]
+        }
+    ]
+}
