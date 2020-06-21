@@ -11,6 +11,10 @@ app.use(bodyparser.json());
 
 // Postgres Client setup
 const { Pool } = require('pg');
+console.log(keys.pgUser);
+console.log(keys.pgUser);
+console.log(keys.pgPassword);
+console.log(keys.pgPort);
 const pgClient = new Pool({
     user: keys.pgUser,
     host: keys.pgDatabase,
